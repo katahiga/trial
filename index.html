@@ -48,7 +48,7 @@
 
 function Reading() {
     const uttr = new SpeechSynthesisUtterance("よみあげ");
-    uttr.lang = 'ko';
+    uttr.lang = 'ko-KR';
     speechSynthesis.speak(uttr);
 
     yomi.textContent = "読み上げた"
