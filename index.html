@@ -21,6 +21,7 @@
     <button onclick="Reading()">ボタン</button>
 
     <div id="yomi">表示</div>
+    <div>表示</div>
 
 
 
@@ -45,6 +46,7 @@
 </style>
 <script>// -----------------------------------------------------------------
 
+
 function Reading() {
     const uttr = new SpeechSynthesisUtterance("よみあげ");
     uttr.lang = 'ko-KR';
@@ -53,7 +55,6 @@ function Reading() {
     yomi.textContent = "読み上げた"
     
 }
-
 
 
 
