@@ -11,14 +11,16 @@
     <!-- アイコン -->
     <script src="https://kit.fontawesome.com/8a7c2d361f.js" crossorigin="anonymous"></script>
     <!-- css -->
-    <link rel="stylesheet" href="D:/script/assets/css/sanitize.css">
-    <link rel="stylesheet" href="D:/script/assets/css/initial.css">
+    <!-- <link rel="stylesheet" href="D:/script/assets/css/sanitize.css">
+    <link rel="stylesheet" href="D:/script/assets/css/initial.css"> -->
     <!-- <link rel="stylesheet" href="./style.css"> -->
 </head>
 <body>
 
 
-    <div>表示</div>
+    <button onclick="Reading()">ボタン</button>
+
+    <div id="yomi">表示</div>
 
 
 
@@ -43,7 +45,14 @@
 </style>
 <script>// -----------------------------------------------------------------
 
+function Reading() {
+    const uttr = new SpeechSynthesisUtterance("よみあげ");
+    uttr.lang = 'ko-KR';
+    speechSynthesis.speak(uttr);
 
+    yomi.textContent = "読み上げた"
+    
+}
 
 
 
