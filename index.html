@@ -18,11 +18,11 @@
 <body>
 
 
-    <button onclick="Reading()">ボタン</button>
 
-    <div id="yomi">表示</div>
+    <input type="file" id="imageInput" accept="image/*">
+    <img id="displayImage" src="D:\script\assets\画像\1.jpg" alt="背景" width="500">
 
-
+    
 
     
 
@@ -47,16 +47,30 @@ body {
 <script>// -----------------------------------------------------------------
 
 
-function Reading() {
-    const uttr = new SpeechSynthesisUtterance("한국");
-    uttr.lang = 'ko-KR';
-    speechSynthesis.speak(uttr);
+document.addEventListener('DOMContentLoaded', function () {
+    const imageInput = document.getElementById('imageInput');
+    const displayImage = document.getElementById('displayImage');
 
-    yomi.textContent = "読み上げた"
-    
-}
+    // ページ読み込み時にローカルストレージから画像データを読み込む
+    const savedImage = localStorage.getItem('selectedImage');
+    if (savedImage) {
+        displayImage.src = savedImage;
+    }
 
-
+    // 画像が選択されたときの処理
+    imageInput.addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                displayImage.src = e.target.result;
+                // ローカルストレージに画像データを保存
+                localStorage.setItem('selectedImage', e.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+});
 
 
 
