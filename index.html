@@ -19,16 +19,25 @@
 
 
 
+
     <input type="file" id="imageInput" accept="image/*">
     <img id="displayImage" src="D:\script\assets\画像\1.jpg" alt="背景" width="500">
 
     
 
+
     <div class="waku">
+
         <button onclick="saveData()">Save Data</button>
         <button onclick="loadData()">Load Data</button>
         <p id="output"></p>
     </div>
+
+
+
+    <div class="garasu"></div>
+
+
 
     
 
@@ -37,10 +46,20 @@
 
 
 body {
-    color: red;
+    background-color: black;
 }
-
-
+.garasu {
+    width: 100%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
 
 
 
