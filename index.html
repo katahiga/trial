@@ -24,6 +24,12 @@
 
     
 
+    <div class="waku">
+        <button onclick="saveData()">Save Data</button>
+        <button onclick="loadData()">Load Data</button>
+        <p id="output"></p>
+    </div>
+
     
 
 <style>/* ---------------------------------------------------------------- */
@@ -71,6 +77,17 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+
+function saveData() {
+    localStorage.setItem('testKey', 'testValue');
+    alert('Data saved');
+}
+
+function loadData() {
+    var value = localStorage.getItem('testKey');
+    document.getElementById('output').innerText = 'Loaded value: ' + value;
+}
 
 
 
