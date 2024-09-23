@@ -10,14 +10,18 @@ const listdisp = document.getElementById('listDisp');
 let data = {
     todayTotal:0,
     startHour:0,
-    total:[1,2,3,4,5]
+    total:[1,2,3,4,5],
+    turn: true
 }
 let endHour,nowSleep;
-let turn = true;
 
 const storedData = localStorage.getItem('saveSleepTime');
 if (storedData) {
     data = JSON.parse(storedData);
+    if (data.turn === false) {
+        document.body.style.backgroundColor = '#6e6e6e';
+        swich.textContent = "일";
+    }
 }
 todayDisp.textContent = data.todayTotal;
 listdisp.textContent = data.total.join('　');
@@ -25,7 +29,7 @@ listdisp.textContent = data.total.join('　');
 swich.addEventListener('click', truefalse);
 
 function truefalse() {
-    if (turn) {
+    if (data.turn) {
         document.body.style.backgroundColor = '#6e6e6e';
         swich.textContent = "일";
 
@@ -38,7 +42,6 @@ function truefalse() {
             }
             data.todayTotal = 0;
         }
-        localStorage.setItem("saveSleepTime", JSON.stringify(data));
     } else {
         document.body.style.backgroundColor = '#d2d2d2';
         swich.textContent = "자"
@@ -47,10 +50,9 @@ function truefalse() {
         nowSleep = calc(data.startHour, endHour);
         data.todayTotal =+ nowSleep;
         todayDisp.textContent = data.todayTotal;
-
-        localStorage.setItem("saveSleepTime", JSON.stringify(data));
     }
-    turn = !turn;
+    data.turn = !data.turn;
+    localStorage.setItem("saveSleepTime", JSON.stringify(data));
 }
 
 // 時間計算
