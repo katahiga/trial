@@ -48,11 +48,12 @@ function truefalse() {
 
         endHour = new Date().getHours();
         nowSleep = calc(data.startHour, endHour);
-        data.todayTotal =+ nowSleep;
+        data.todayTotal += (nowSleep > 0) ? nowSleep : 0;
         todayDisp.textContent = data.todayTotal;
     }
     data.turn = !data.turn;
     localStorage.setItem("saveSleepTime", JSON.stringify(data));
+    
 }
 
 // 時間計算
